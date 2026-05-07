@@ -91,6 +91,10 @@ h1{
     border-radius:20px;
     box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
+button, .btn {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
 
 @keyframes fadeIn{
     from{opacity:0; transform:scale(0.8);}
@@ -139,8 +143,7 @@ function showLove(){
 
     document.getElementById("coupleImg").src = "couple.png";
 }
-noBtn.addEventListener("touchstart", function(e){
-
+function moveButton() {
     const containerRect = container.getBoundingClientRect();
     const btnWidth = noBtn.offsetWidth;
     const btnHeight = noBtn.offsetHeight;
@@ -153,8 +156,12 @@ noBtn.addEventListener("touchstart", function(e){
 
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
+}
 
-    e.preventDefault(); // prevents sticky touch behavior
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", function(e){
+    moveButton();
+    e.preventDefault(); // stops weird mobile freeze
 });
 
 </script>
