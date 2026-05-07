@@ -68,6 +68,9 @@ h1{
     background:white;
     color:#ff0066;
     position:absolute;
+    outline:none;
+    -webkit-tap-highlight-color:transparent;
+    user-select:none;
 }
 
 /* Romantic Page */
@@ -90,10 +93,6 @@ h1{
     width:300px;
     border-radius:20px;
     box-shadow:0 0 20px rgba(0,0,0,0.3);
-}
-button, .btn {
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes fadeIn{
@@ -121,9 +120,7 @@ button, .btn {
 const noBtn = document.getElementById("noBtn");
 const container = document.querySelector(".container");
 
-noBtn.addEventListener("mouseover", function(){
-
-    const containerRect = container.getBoundingClientRect();
+function moveButton() {
     const btnWidth = noBtn.offsetWidth;
     const btnHeight = noBtn.offsetHeight;
 
@@ -135,37 +132,22 @@ noBtn.addEventListener("mouseover", function(){
 
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
+}
+
+/* FIXED: works on mobile + desktop */
+noBtn.addEventListener("pointerenter", moveButton);
+noBtn.addEventListener("pointerdown", function(e){
+    moveButton();
+    e.preventDefault();
 });
 
 function showLove(){
-    document.getElementById("mainPage").style.display="none";
-    document.getElementById("lovePage").style.display="flex";
+    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("lovePage").style.display = "flex";
 
     document.getElementById("coupleImg").src = "couple.png";
 }
-function moveButton() {
-    const containerRect = container.getBoundingClientRect();
-    const btnWidth = noBtn.offsetWidth;
-    const btnHeight = noBtn.offsetHeight;
-
-    const maxX = container.clientWidth - btnWidth;
-    const maxY = container.clientHeight - btnHeight;
-
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
-
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
-}
-
-noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("touchstart", function(e){
-    moveButton();
-    e.preventDefault(); // stops weird mobile freeze
-});
-
 </script>
 
 </body>
 </html>
-
