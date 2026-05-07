@@ -139,6 +139,23 @@ function showLove(){
 
     document.getElementById("coupleImg").src = "couple.png";
 }
+noBtn.addEventListener("touchstart", function(e){
+
+    const containerRect = container.getBoundingClientRect();
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = container.clientWidth - btnWidth;
+    const maxY = container.clientHeight - btnHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+
+    e.preventDefault(); // prevents sticky touch behavior
+});
 
 </script>
 
