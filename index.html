@@ -140,7 +140,7 @@
             position: relative;
             z-index: 10;
             width: 92%;
-            max-width: 460px;
+            max-width: 420px;
             min-height: auto;
             perspective: 1000px;
             margin: 0 auto;
@@ -148,18 +148,19 @@
 
         .card {
             width: 100%;
-            min-height: 520px;
+            min-height: auto;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(20px);
             border-radius: 32px;
-            padding: 36px 28px;
+            padding: 32px 24px;
             text-align: center;
             box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
+            gap: 18px;
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.5s, border-color 0.4s;
             position: relative;
         }
